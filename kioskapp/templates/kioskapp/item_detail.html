@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+
+{% block title %} 
+{{item.item_name}} Detail
+
+{% endblock %}
+
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% block content %}
+    <h1>{{item.item_name}} Detail</h1>
+    <br>
+
+    <h2>{{item.item_name}} general information</h2>
+    <p><strong>By: </strong>{{item.user}},
+    on {{item.timestamp}}</p>
+    <hr>
+    <p><strong>Barcode: </strong>{{item.barcode}}</p>
+    <p><strong>Category: </strong>{{item.category}}</p>
+    <p><strong>Brand name: </strong>{{item.brandname}}</p>
+    <p><strong>Model name: </strong>{{item.modelname}}</p>
+    <p><strong>Item description: </strong>{{item.item_description}}</p>
+    <p><strong>Supplier: </strong>{{item.supplier}}</p>
+    <p><strong>Selling price: </strong>{{item.sellingprice}}</p>
+    <br>
+
+    <h2>{{item.item_name}} properties</h2>
+    {% for properties in item.item_properties_set.all %}
+        <hr>
+        <p><strong>Color: </strong>{{properties.color}}</p>
+        <p><strong>Size: </strong>{{properties.size}}</p>
+        <p><strong>Weight: </strong>{{properties.weight}}</p>
+
+    {% endfor %}
+    <br>
+
+    <h2>{{item.item_name}} batch information</h2>
+    {% for batch in item.item_batch_set.all %}
+        <hr>
+        <p><strong>Batch code: </strong>{{batch.item_batch_code}}</p>
+        <p><strong>Manufacture date: </strong>{{batch.manufacture_date}}</p>
+        <p><strong>Expiry date: </strong>{{batch.expiry_date}}</p>
+
+    {% endfor %}
+{% endblock %}

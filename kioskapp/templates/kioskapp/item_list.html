@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block title %} 
+Items List
+{% endblock %}
+
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% block content %}
+    <h1>Items List</h1>
+
+    {% if item_list %}
+        <ul>
+            {% for item in item_list %}
+                <li>
+                    <a href="{{ item.get_absolute_url }}">{{ item.item_name }}</a>
+                    ({{ item.brandname }}, {{item.modelname}}, kr. {{item.sellingprice}})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There is no item in Kiosk.</p>
+    {% endif %}
+{% endblock %}

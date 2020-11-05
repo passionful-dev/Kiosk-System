@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %} 
+{{received_item.item.item_name}} Detail
+
+{% endblock %}
+
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% block content %}
+    <h1>{{received_item.item.item_name}} Detail</h1>
+    <br>
+
+    <p><strong>By: </strong>{{received_item.user}},
+    on {{received_item.timestamp}}</p>
+    <hr>
+    
+    <p><strong>Quantity received: </strong>{{received_item.received_quantity}}</p>
+    <p><strong>Total cost price: </strong>kr. {{received_item.cost_price}}</p>
+    <p><strong>Price per piece: </strong>kr. {{received_item.price_per_piece}}</p>
+{% endblock %}

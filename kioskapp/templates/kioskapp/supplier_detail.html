@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block title %} 
+{{supplier.supplier_name}} Detail
+
+{% endblock %}
+
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% block content %}
+    <h1>{{supplier.supplier_name}} Detail</h1>
+    <br>
+
+    <p><strong>By: </strong>{{supplier.user}},
+    on {{supplier.timestamp}}</p>
+    <hr>
+    <!-- <p><strong>Supplier name: </strong>{{supplier.supplier_name}}</p> -->
+    
+    <p><strong>Supplier items: </strong>
+    {% for item in supplier.item_set.all %}
+        <!-- {{item.item_name}} , -->
+        {% if not forloop.last %}
+            {{item.item_name}},
+        {% else %}
+            {{item.item_name}}
+        {% endif %}
+        <!-- {% if item.item_name.count >= 1 %}, {% else %}{% endif %}
+        {{item.item_name.count}} -->
+        
+    {% endfor %}
+    </p>
+{% endblock %}

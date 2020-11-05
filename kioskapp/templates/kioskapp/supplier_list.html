@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block title %} 
+Suppliers List
+{% endblock %}
+
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% block content %}
+    <h1>Suppliers List</h1>
+
+    {% if supplier_list %}
+        <ul>
+            {% for supplier in supplier_list %}
+                <li>
+                    <a href="{{ supplier.get_absolute_url }}">{{ supplier.supplier_name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There is no supplier for Kiosk.</p>
+    {% endif %}
+{% endblock %}

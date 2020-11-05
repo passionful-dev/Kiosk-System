@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block title %} 
+{{category.category_name}} Detail
+
+{% endblock %}
+
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% block content %}
+    <h1>{{category.category_name}} Detail</h1>
+    <br>
+
+    <p><strong>By: </strong>{{category.user}},
+    on {{category.timestamp}}</p>
+    <hr>
+    <!-- <p><strong>Category name: </strong>{{category.category_name}}</p> -->
+    
+    <p><strong>Category items: </strong>
+    {% for item in category.item_set.all %}
+        {% if not forloop.last %}
+            {{item.item_name}},
+        {% else %}
+            {{item.item_name}}
+        {% endif %}
+    {% endfor %}
+    </p>
+{% endblock %}

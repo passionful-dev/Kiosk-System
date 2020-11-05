@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block title %} 
+{{sold_item.item.item_name}} Detail
+
+{% endblock %}
+
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% block content %}
+    <h1>{{sold_item.item.item_name}} Detail</h1>
+    <br>
+
+    <p><strong>By: </strong>{{sold_item.user}},
+    on {{sold_item.timestamp}}</p>
+    <hr>
+    
+    <p><strong>Sold quantity: </strong>{{sold_item.sold_quantity}}<!--, 
+    out of 
+     {% for received_item in sold_item.received_item_set.all %}
+        {{received_item.received_quantity}}
+    {% endfor %}  -->
+    </p>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block title %} 
+Kiosk Home
+{% endblock %}
+
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% block content %}
+<h1>Kiosk Home</h1>
+
+<p>Welcome to the home page of Kiosk.</p>
+
+<p>The library has following record counts:</p>
+<!-- num_items, num_categories, num_suppliers, num_receiveditems,
+num_solditems, num_availableitems -->
+<ul>
+    <li><strong>Total Items: </strong> {{ num_items }}</li>
+    <li><strong>Total Categories: </strong> {{ num_categories }}</li>
+    <li><strong>Total Suppliers: </strong> {{ num_suppliers }}</li>
+    <li><strong>Received Items: </strong> {{ num_receiveditems }}</li>
+    <li><strong>Sold Items: </strong> {{ num_solditems }}</li>
+    <li><strong>Available Items: </strong> {{ num_availableitems }}</li>
+    
+</ul>
+{% endblock %}
